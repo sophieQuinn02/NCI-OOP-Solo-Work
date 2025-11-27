@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vegetableapp;
+//import maingui.LandingPage;
+import vegetableapp.VegCheckGUI;
 
 /**
  *
@@ -40,7 +42,6 @@ public class VegPanel extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         harvestGuideText = new javax.swing.JTextArea();
         progressTrackerButton = new javax.swing.JButton();
-        vegProgressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +83,11 @@ public class VegPanel extends javax.swing.JFrame {
         jScrollPane2.setViewportView(harvestGuideText);
 
         progressTrackerButton.setText("Progress Tracker");
+        progressTrackerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                progressTrackerButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,11 +103,8 @@ public class VegPanel extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addComponent(progressTrackerButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(vegProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addComponent(progressTrackerButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,8 +132,6 @@ public class VegPanel extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(progressTrackerButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vegProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(homeButton)
                         .addContainerGap())
@@ -153,11 +154,21 @@ public class VegPanel extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
+        //LandingPage landingGUI = new LandingPage();
+        //landingGUI.setVisible(true);
+        //dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void onionRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onionRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_onionRadioButtonActionPerformed
+
+    private void progressTrackerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progressTrackerButtonActionPerformed
+        // TODO add your handling code here:
+        VegCheckGUI sqGUI2 = new VegCheckGUI();
+        sqGUI2.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_progressTrackerButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,7 +207,6 @@ public class VegPanel extends javax.swing.JFrame {
     private javax.swing.JRadioButton potatoRadioButton;
     private javax.swing.JButton progressTrackerButton;
     private javax.swing.JButton vegConfirmButton;
-    private javax.swing.JProgressBar vegProgressBar;
     private javax.swing.JLabel vegTitle;
     // End of variables declaration//GEN-END:variables
 }

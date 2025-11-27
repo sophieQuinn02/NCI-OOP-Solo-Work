@@ -59,5 +59,9 @@ public class VegGuide {
     public void setRot(double rot) {
         this.rot = rot;
     }
+    
+    public String printResult(){
+        return colour+" , "+time+" , "+size;
+    }
 }
 

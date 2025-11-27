@@ -15,9 +15,24 @@ public class Potato extends VegGuide implements HarvestTime{
         super(colour, time, size, rot);
         this.sunlightCheck = sunlightCheck;
     }
-}
 
+        public double getSunlightCheck() {
+            return sunlightCheck;
+        }
+
+        public void setSunlightCheck(double sunlightCheck) {
+            this.sunlightCheck = sunlightCheck;
+        }
+        
     @Override
     public double HarvestTime(){
         
     }
+    
+    @Override
+    public String printResult(){
+        return super.printResult()+" , "+sunlightCheck;
+    }
+}
+
+
