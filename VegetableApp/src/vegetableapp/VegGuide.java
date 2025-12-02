@@ -29,11 +29,11 @@ public class VegGuide {
         colour = "no input"; //if no input is typed by the user, this will appear
         size = "no input"; //if no input is typed by the user, this will appear
         saveName = "no input"; //if no input is typed by the user, this will appear
-        time = 0;
-        rot = 0;
-        randomDays = 0;
+        time = 0; //default parameter 
+        rot = 0; //default parameter 
+        randomDays = 0; //default parameter 
     }
-
+        //setters and getters
     public String getColour() {
         return colour;
     }

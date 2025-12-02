@@ -6,35 +6,31 @@ package vegetableapp;
 
 /**
  *
- * @author
+ * @author Sophie Quinn
  */
-public class Potato extends VegGuide implements HarvestTime{
-    private String sunlightCheck; //the unique variable for Potato
+public class Potato extends VegGuide implements HarvestTime{ //the carrot class takes variables from VegGuide and uses HarvestTime
+    private int sunlightCheck; //the unique variable for Potato
     
-    public Potato(String colour, String saveName, int time, String size, int rot, int randomDays, String sunlightCheck){
-        super(colour, saveName, time, size, rot, randomDays);
+    public Potato(String colour, String saveName, int time, String size, int rot, int randomDays, int sunlightCheck){
+        super(colour, saveName, time, size, rot, randomDays); //vegGuide super class
         this.sunlightCheck = sunlightCheck;
     }
 
-   // Potato(String colour, String saveName, int time, String size, double rot, String sunlightCheck) {
-       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    //}
-
-        public String getSunlightCheck() {
+        public int getSunlightCheck() { //the setters and getters
             return sunlightCheck;
         }
 
-        public void setSunlightCheck(String sunlightCheck) {
+        public void setSunlightCheck(int sunlightCheck) {
             this.sunlightCheck = sunlightCheck;
         }
         
     @Override
     public String HarvestTime(){
-        return sunlightCheck;
+        return Integer.toString(sunlightCheck); //the toString converts the int sunlightCheck to the String HarvestTime
     }
     
     @Override
-    public String printResult(){
+    public String printResult(){ //used for the gui
         return super.printResult()+" , "+sunlightCheck;
     }
 }

@@ -8,19 +8,15 @@ package vegetableapp;
  *
  * @author Sophie Quinn
  */
-public class Onion extends VegGuide implements HarvestTime{
+public class Onion extends VegGuide implements HarvestTime{ //the carrot class takes variables from VegGuide and uses HarvestTime
     private String dirtCoverage; //the unique variable for Onion
     
         public Onion(String colour, String saveName, int time, String size, int rot, int randomDays, String dirtCoverage){
-        super(colour, saveName, time, size, rot, randomDays);
+        super(colour, saveName, time, size, rot, randomDays); //vegGuide super class
         this.dirtCoverage = dirtCoverage;
     }
 
-   // Onion(String colour, String saveName, int time, String size, double rot, String dirtCoverage) {
-       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-   // }
-
-        public String getDirtCoverage() {
+        public String getDirtCoverage() { //the setters and getters
             return dirtCoverage;
         }
 
@@ -34,7 +30,7 @@ public class Onion extends VegGuide implements HarvestTime{
     }
     
     @Override
-    public String printResult(){
+    public String printResult(){ //used for the gui
         return super.printResult()+" , "+dirtCoverage;
     }
 }

@@ -8,19 +8,15 @@ package vegetableapp;
  *
  * @author Sophie Quinn
  */
-public class Carrot extends VegGuide implements HarvestTime{
+public class Carrot extends VegGuide implements HarvestTime{ //the carrot class takes variables from VegGuide and uses HarvestTime
     private String seasonCheck; //the unique variable for Carrot
     
         public Carrot(String colour, String saveName, int time, String size, int rot, int randomDays, String seasonCheck){
-        super(colour, saveName, time, size, rot, randomDays);
+        super(colour, saveName, time, size, rot, randomDays); //vegGuide super class
         this.seasonCheck = seasonCheck;
     }
 
-    //Carrot(String colour, String saveName, int time, String size, double rot, String seasonCheck) {
-      //  throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-   // }
-
-        public String getSeasonCheck() {
+        public String getSeasonCheck() { //the setters and getters
             return seasonCheck;
         }
 
@@ -34,7 +30,7 @@ public class Carrot extends VegGuide implements HarvestTime{
     }
     
     @Override
-    public String printResult(){
+    public String printResult(){ //used for the gui
     return super.printResult()+" , "+seasonCheck;
     }
 }

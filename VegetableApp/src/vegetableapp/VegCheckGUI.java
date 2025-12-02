@@ -12,16 +12,16 @@ import javax.swing.JOptionPane;
  * @author Sophie Quinn
  */
 public class VegCheckGUI extends javax.swing.JFrame {
-    private ArrayList<VegGuide> vegList;//declare ArrayList of Vegguide objects
+    private final ArrayList<VegGuide> vegList; //this is the array list of VegGuide objects
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VegCheckGUI.class.getName());
-       String colour, size, saveName, sunlightCheck, dirtCoverage, seasonCheck;
-       int time, rot, randomDays;
+       String colour, size, saveName,dirtCoverage, seasonCheck; //variables
+       int time, rot, randomDays, sunlightCheck; //variables
     /**
      * Creates new form VegCheckGUI
      */
     public VegCheckGUI() {
-        vegList = new ArrayList<>();//creating ArrayList of Employee Objects
+        vegList = new ArrayList<>(); //creating new vegGuide array list
         initComponents();
     }
 
@@ -159,7 +159,7 @@ public class VegCheckGUI extends javax.swing.JFrame {
         q5tBox.setColumns(20);
         q5tBox.setLineWrap(true);
         q5tBox.setRows(5);
-        q5tBox.setText("save results with a name:");
+        q5tBox.setText("Save results with a name:");
         q5tBox.setWrapStyleWord(true);
         jScrollPane5.setViewportView(q5tBox);
 
@@ -179,14 +179,14 @@ public class VegCheckGUI extends javax.swing.JFrame {
         q4inputBox.setBackground(new java.awt.Color(51, 51, 51));
         q4inputBox.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         q4inputBox.setForeground(new java.awt.Color(255, 255, 255));
-        q4inputBox.setText("example...");
+        q4inputBox.setText("3");
         getContentPane().add(q4inputBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 170, -1));
 
         q4tBox.setEditable(false);
         q4tBox.setColumns(20);
         q4tBox.setLineWrap(true);
         q4tBox.setRows(5);
-        q4tBox.setText("final veg-specific question!");
+        q4tBox.setText("Final veg-specific question!");
         q4tBox.setWrapStyleWord(true);
         jScrollPane4.setViewportView(q4tBox);
 
@@ -207,7 +207,7 @@ public class VegCheckGUI extends javax.swing.JFrame {
         q3tBox.setColumns(20);
         q3tBox.setLineWrap(true);
         q3tBox.setRows(5);
-        q3tBox.setText("how big is your veg?");
+        q3tBox.setText("How big is your veg?");
         q3tBox.setWrapStyleWord(true);
         jScrollPane3.setViewportView(q3tBox);
 
@@ -249,7 +249,7 @@ public class VegCheckGUI extends javax.swing.JFrame {
         q1tBox.setColumns(20);
         q1tBox.setLineWrap(true);
         q1tBox.setRows(5);
-        q1tBox.setText("how many days have your veg been planted?");
+        q1tBox.setText("How many days have your veg been planted?");
         q1tBox.setWrapStyleWord(true);
         jScrollPane1.setViewportView(q1tBox);
 
@@ -262,18 +262,18 @@ public class VegCheckGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
+        // this is the button to go back to the previous GUI
         VegPanel sqGUI2 = new VegPanel();
         sqGUI2.setVisible(true);
         dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void displayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBtnActionPerformed
-        if(vegList.isEmpty()){
+        if(vegList.isEmpty()){ //when there's nothing in the array, this will pop up
             JOptionPane.showMessageDialog(this,"There is no vegetable data found. Please add more to display.");
             
         }
-        else{
+        else{ //if there are items in the array, they will b retrieved and printed to the user
             for(int i = 0; i < vegList.size();i++){
                 VegGuide v = vegList.get(i);
                 JOptionPane.showMessageDialog(this,v.printResult());
@@ -294,64 +294,145 @@ public class VegCheckGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_q3inputBoxActionPerformed
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-        if(carrotBtn.isSelected()){
-            time = Integer.parseInt(q1inputBox.getText());
-            colour = q2inputBox.getText();
-            size = q3inputBox.getText();
-            seasonCheck = q4inputBox.getText();
-            saveName = q5inputBox.getText();
-            randomDays = ((int)(Math.random() *246)+20-time);
-        
+        if(carrotBtn.isSelected()){ //if carrot radio button is selected
+            time = Integer.parseInt(q1inputBox.getText()); //retrieves what the user inputted in the text box
+            colour = q2inputBox.getText(); //retrieves what the user inputted in the text box
+            size = q3inputBox.getText(); //retrieves what the user inputted in the text box
+            seasonCheck = q4inputBox.getText(); //retrieves what the user inputted in the text box
+            saveName = q5inputBox.getText(); //retrieves what the user inputted in the text box
+            randomDays = ((int)(Math.random() *246)+20-time); //the harvest time will b a random day plus 20 minus user inputted days (for fun)
+            
+            //this set of if statements corresponds to each question, and adds up the rot counter
+                if(time>=247){ //time question
+                    rot = rot + 35;
+                }
+                else{
+                    rot = rot + 1;
+                }
+                    if(colour.equalsIgnoreCase("Orange")|| colour.equalsIgnoreCase("Red")){ //colour question
+                        rot = rot + 0;
+                    }
+                    else{
+                        rot = rot + 5;
+                    }
+                        if(size.equalsIgnoreCase("Small") && time<=60 || size.equalsIgnoreCase("Medium") && time<=150 || size.equalsIgnoreCase("Large") && time>=190){ //size question
+                            rot = rot + 0;
+                        }
+                        else{
+                            rot = rot + 5;
+                        }
+                            if(seasonCheck.equalsIgnoreCase("Spring")|| seasonCheck.equalsIgnoreCase("Summer")){ //season check question
+                                rot = rot + 0;
+                            }
+                            else{
+                                rot = rot + 5;
+                            }
+                            
+              //creates an object Carrot
             Carrot c = new Carrot(colour,saveName,time,size,rot,randomDays,seasonCheck);
-            JOptionPane.showMessageDialog(null,"ya result is: \n\ndays planted: "+time+"\ncarrot colour: "+colour+"\ncarrot size: "+size+"\nseason: "+seasonCheck+"\ndata saved under: "+saveName+"\n\nexpected days until harvest: "+randomDays+"\nchance of vegetable rot: "+rot);
+            JOptionPane.showMessageDialog(null,"Ya result is: \n\nDays planted: "+time+"\nCarrot colour: "+colour+"\nCarrot size: "+size+"\nSeason: "+seasonCheck+"\nData saved under: "+saveName+"\n\nExpected days until harvest: "+randomDays+"\nChance of vegetable rot: "+rot+"%");
             vegList.add(c);//add object to ArrayList
         }
-        else if(potatoBtn.isSelected()){
-            time = Integer.parseInt(q1inputBox.getText());
-            colour = q2inputBox.getText();
-            size = q3inputBox.getText();
-            sunlightCheck = q4inputBox.getText();
-            saveName = q5inputBox.getText();
-            randomDays = ((int)(Math.random() *141)+20-time);
-            //rot =
-        
+        else if(potatoBtn.isSelected()){ //if the potato radio button is selected
+            time = Integer.parseInt(q1inputBox.getText()); //retrieves what the user inputted in the text box
+            colour = q2inputBox.getText(); //retrieves what the user inputted in the text box
+            size = q3inputBox.getText(); //retrieves what the user inputted in the text box
+            sunlightCheck = Integer.parseInt(q4inputBox.getText()); //retrieves what the user inputted in the text box
+            saveName = q5inputBox.getText(); //retrieves what the user inputted in the text box
+            randomDays = ((int)(Math.random() *141)+20-time); //the harvest time will b a random day plus 20 minus user inputted days (for fun)
+            
+            //this set of if statements corresponds to each question, and adds up the rot counter
+                if(time>=142){ //time question
+                    rot = rot + 35;
+                }
+                else{
+                    rot = rot + 1;
+                }
+                    if(colour.equalsIgnoreCase("Yellow") || colour.equalsIgnoreCase("Pale")){ //colour question
+                        rot = rot + 0;
+                    }
+                    else{
+                        rot = rot + 5;
+                    }
+                        if(size.equalsIgnoreCase("Small") && time<=20 || size.equalsIgnoreCase("Medium") && time<=80 || size.equalsIgnoreCase("Large") && time>=100){ //size question
+                            rot = rot + 0;
+                        }
+                        else{
+                            rot = rot + 7;
+                        }
+                            if(sunlightCheck == (time*3)){ //sunlight check question
+                                rot = rot + 0;
+                            }
+                            else{
+                                rot = rot + 10;
+                            }
+                            
+             //Creates Potato Object
             Potato p = new Potato(colour,saveName,time,size,rot,randomDays,sunlightCheck);
-            JOptionPane.showMessageDialog(null,"ya result is: \n\ndays planted: "+time+"\npotato colour: "+colour+"\npotato size: "+size+"\nhours of sunlight: "+sunlightCheck+"\ndata saved under: "+saveName+"\n\nexpected days until harvest: "+randomDays+"\nchance of vegetable rot: "+rot);
+            JOptionPane.showMessageDialog(null,"Ya result is: \n\nDays planted: "+time+"\nPotato colour: "+colour+"\nPotato size: "+size+"\nHours of sunlight: "+sunlightCheck+"\nData saved under: "+saveName+"\n\nExpected days until harvest: "+randomDays+"\nChance of vegetable rot: "+rot+"%");
             vegList.add(p);//add object to ArrayList
         }
-        else if(onionBtn.isSelected()){
-            time = Integer.parseInt(q1inputBox.getText());
-            colour = q2inputBox.getText();
-            size = q3inputBox.getText();
-            dirtCoverage = q4inputBox.getText();
-            saveName = q5inputBox.getText();
-            randomDays = ((int)(Math.random() *101)+20-time);
-        
+        else if(onionBtn.isSelected()){ //if onion radio 
+            time = Integer.parseInt(q1inputBox.getText()); //retrieves what the user inputted in the text box
+            colour = q2inputBox.getText(); //retrieves what the user inputted in the text box
+            size = q3inputBox.getText(); //retrieves what the user inputted in the text box
+            dirtCoverage = q4inputBox.getText(); //retrieves what the user inputted in the text box
+            saveName = q5inputBox.getText(); //retrieves what the user inputted in the text box
+            randomDays = ((int)(Math.random() *101)+20-time); //the harvest time will b a random day plus 20 minus user inputted days (for fun)
+            
+            //this set of if statements corresponds to each question, and adds up the rot counter
+                if(time>=102){ //time question
+                    rot = rot + 45;
+                }
+                else{
+                    rot = rot + 1;
+                }
+                    if(colour.equalsIgnoreCase("Red") || colour.equalsIgnoreCase("Green") || colour.equalsIgnoreCase("White")){ //colour question
+                        rot = rot + 0;
+                    }
+                    else{
+                        rot = rot + 5;
+                    }
+                        if(size.equalsIgnoreCase("Small") && time<=15 || size.equalsIgnoreCase("Medium") && time<=55 || size.equalsIgnoreCase("Large") && time>=75){ //size question
+                            rot = rot + 0;
+                        }
+                        else{
+                            rot = rot + 7;
+                        }
+                            if(dirtCoverage.equalsIgnoreCase("Yes")){ //dirt coverage question
+                                rot = rot + 0;
+                            }
+                            else{
+                                rot = rot + 5;
+                            }
+                            
+            //Creates Onion Object
             Onion o = new Onion(colour,saveName,time,size,rot,randomDays,dirtCoverage);
-            JOptionPane.showMessageDialog(null,"ya result is: \n\ndays planted: "+time+"\nonion colour: "+colour+"\nonion size: "+size+"\ndirt coverage: "+dirtCoverage+"\ndata saved under: "+saveName+"\n\nexpected days until harvest: "+randomDays+"\nchance of vegetable rot: "+rot);
+            JOptionPane.showMessageDialog(null,"Ya result is: \n\nDays planted: "+time+"\nOnion colour: "+colour+"\nOnion size: "+size+"\nDirt coverage: "+dirtCoverage+"\nData saved under: "+saveName+"\n\nExpected days until harvest: "+randomDays+"\nChance of vegetable rot: "+rot+"%");
             vegList.add(o);//add object to ArrayList
         }
     }//GEN-LAST:event_submitBtnActionPerformed
-
+        //questions change if carrot radio button is selected
     private void carrotBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carrotBtnActionPerformed
-        q1tBox.setText("how many days have your carrots been planted?");
+        q1tBox.setText("How many days have your carrots been planted?");
         q2tBox.setText("What colour are your carrots?");
-        q3tBox.setText("how big are your carrots?");
+        q3tBox.setText("How big are your carrots?");
         q4tBox.setText("what season is it? (winter, summer etc)");
     }//GEN-LAST:event_carrotBtnActionPerformed
-
+        
+        //questions change if potato radio button is selected
     private void potatoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potatoBtnActionPerformed
-        q1tBox.setText("how many days have your potatoes been planted?");
+        q1tBox.setText("How many days have your potatoes been planted?");
         q2tBox.setText("What colour are your ptoatoes?");
-        q3tBox.setText("how big are your potatoes?");
-        q4tBox.setText("how many hours of sunlight per day do you get?");
+        q3tBox.setText("How big are your potatoes?");
+        q4tBox.setText("How many hours of sunlight per day do you get?");
     }//GEN-LAST:event_potatoBtnActionPerformed
-
+        //questions change if onion radio button is selected
     private void onionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onionBtnActionPerformed
-        q1tBox.setText("how many days have your onions been planted?");
+        q1tBox.setText("How many days have your onions been planted?");
         q2tBox.setText("What colour are your onions?");
-        q3tBox.setText("how big are your onions?");
-        q4tBox.setText("is there dirt covering the onions? (yes, no");
+        q3tBox.setText("How big are your onions?");
+        q4tBox.setText("Is there dirt covering the onions? (yes or no)");
     }//GEN-LAST:event_onionBtnActionPerformed
 
     private void q5inputBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_q5inputBoxActionPerformed
@@ -359,14 +440,14 @@ public class VegCheckGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_q5inputBoxActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        if(vegList.isEmpty()){
+        if(vegList.isEmpty()){ //if the array is empty when deleting, there will be a response printed to the user
             JOptionPane.showMessageDialog(this,"There is no vegetable data to delete");
         }
-        else{
-            String searchTerm = JOptionPane.showInputDialog(this,"Pls enter saved name to delete:");
+        else{ //if there are items in the array, the user can sort through them using the saved name and delete it
+            String searchTerm = JOptionPane.showInputDialog(this,"Please enter saved name to delete:");
                         System.out.print(searchTerm);
 
-            for(int i = 0; i < vegList.size();i++){
+            for(int i = 0; i < vegList.size();i++){ //the saved name is searched for in the array, disregarding case-sensitivity and is removed
                 if(vegList.get(i).getSaveName().equalsIgnoreCase(searchTerm)){
                     vegList.remove(i);
                     JOptionPane.showMessageDialog(this,"Sucessfully deleted "+searchTerm+".");
@@ -376,13 +457,13 @@ public class VegCheckGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        if(vegList.isEmpty()){
+        if(vegList.isEmpty()){ //if the array is empty when searching, there will b a response printed to the user
             JOptionPane.showMessageDialog(this,"There is no vegetable data to search.");
         }
-        else{
-            String searchTerm = JOptionPane.showInputDialog(this,"Pls enter saved name:");
+        else{ //if there are items in the array, the user can search through it using the saved name.
+            String searchTerm = JOptionPane.showInputDialog(this,"Please enter saved name:");
             System.out.print(searchTerm);
-            for(int i = 0; i < vegList.size();i++){
+            for(int i = 0; i < vegList.size();i++){ //the saved name is searched for in the array, disregarding case-sensitivity and displayed
                 if(vegList.get(i).getSaveName().equalsIgnoreCase(searchTerm)){
                     JOptionPane.showMessageDialog(this, vegList.get(i).printResult());
                 }
