@@ -6,8 +6,8 @@ package vegetableapp;
 
 /**
  *
- * @author omgit
+ * @author Sophie Quinn
  */
-public interface HarvestTime {
-    double HarvestTime();
+public interface HarvestTime { //stores the unique variable for each vegetable - carrots, potatoes and onions.
+    String HarvestTime();
 }

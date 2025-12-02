@@ -4,11 +4,12 @@
  */
 package vegetableapp;
 //import maingui.LandingPage;
+import javax.swing.JOptionPane;
 import vegetableapp.VegCheckGUI;
 
 /**
  *
- * @author omgit
+ * @author Sophie Quinn
  */
 public class VegPanel extends javax.swing.JFrame {
     
@@ -31,19 +32,26 @@ public class VegPanel extends javax.swing.JFrame {
     private void initComponents() {
 
         RadioButtonGroup = new javax.swing.ButtonGroup();
+        vegetableCareGuideLABEL = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
-        vegTitle = new javax.swing.JLabel();
         onionRadioButton = new javax.swing.JRadioButton();
         carrotRadioButton = new javax.swing.JRadioButton();
         potatoRadioButton = new javax.swing.JRadioButton();
-        vegConfirmButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         VegCareText = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         harvestGuideText = new javax.swing.JTextArea();
         progressTrackerButton = new javax.swing.JButton();
+        bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(500, 300));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        vegetableCareGuideLABEL.setBackground(new java.awt.Color(255, 255, 255));
+        vegetableCareGuideLABEL.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        vegetableCareGuideLABEL.setText("Vegetable Care Guide");
+        getContentPane().add(vegetableCareGuideLABEL, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 220, 30));
 
         homeButton.setText("Back to Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -51,103 +59,77 @@ public class VegPanel extends javax.swing.JFrame {
                 homeButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        vegTitle.setText("Vegetable Care Guide");
-
+        onionRadioButton.setBackground(new java.awt.Color(0, 255, 102));
         RadioButtonGroup.add(onionRadioButton);
+        onionRadioButton.setForeground(new java.awt.Color(0, 0, 0));
         onionRadioButton.setText("Onions");
+        onionRadioButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         onionRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 onionRadioButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(onionRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 100, -1));
 
+        carrotRadioButton.setBackground(new java.awt.Color(0, 255, 102));
         RadioButtonGroup.add(carrotRadioButton);
+        carrotRadioButton.setForeground(new java.awt.Color(0, 0, 0));
         carrotRadioButton.setText("Carrots");
+        carrotRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carrotRadioButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(carrotRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 100, -1));
 
+        potatoRadioButton.setBackground(new java.awt.Color(0, 255, 102));
         RadioButtonGroup.add(potatoRadioButton);
+        potatoRadioButton.setForeground(new java.awt.Color(0, 0, 0));
         potatoRadioButton.setText("Potatoes");
-
-        vegConfirmButton.setText("Confirm");
+        potatoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                potatoRadioButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(potatoRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 100, -1));
 
         VegCareText.setEditable(false);
         VegCareText.setColumns(20);
+        VegCareText.setLineWrap(true);
         VegCareText.setRows(5);
-        VegCareText.setText("\nSelect one of the options below and \nclick \"Confirm\" to view a guide on\nhow to care for each vegetable.");
+        VegCareText.setText("\nSelect one of the options\nbelow to view a guide on\nhow to care for each vegetable.");
+        VegCareText.setWrapStyleWord(true);
+        VegCareText.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setViewportView(VegCareText);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 190, -1));
 
         harvestGuideText.setEditable(false);
         harvestGuideText.setColumns(20);
+        harvestGuideText.setLineWrap(true);
         harvestGuideText.setRows(5);
         harvestGuideText.setText("\nClick the button below for \nthe Vegetable Progress Tracker! \nThis will give you an estimated\nhavest time for your vegetables.\n");
+        harvestGuideText.setWrapStyleWord(true);
+        harvestGuideText.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane2.setViewportView(harvestGuideText);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 200, 110));
+
+        progressTrackerButton.setBackground(new java.awt.Color(51, 255, 102));
+        progressTrackerButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        progressTrackerButton.setForeground(new java.awt.Color(0, 0, 0));
         progressTrackerButton.setText("Progress Tracker");
         progressTrackerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 progressTrackerButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(progressTrackerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 160, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(homeButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(progressTrackerButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vegConfirmButton)
-                            .addComponent(potatoRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(carrotRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(onionRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(89, 89, 89))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(vegTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(208, 208, 208))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(vegTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(progressTrackerButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(homeButton)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(onionRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(carrotRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(potatoRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vegConfirmButton)
-                        .addContainerGap(31, Short.MAX_VALUE))))
-        );
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vegetableapp/imagepkg/OOP vegApp bg2.jpg"))); // NOI18N
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,7 +142,7 @@ public class VegPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void onionRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onionRadioButtonActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,"Lorem ipsum dolor sit amet, consectetur adipiscing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco \nlaboris nisi ut aliquip ex ea commodo consequat. \nDuis aute irure dolor in reprehenderit \nin voluptate velit esse cillum dolore eu fugiat nulla pariatur. \nExcepteur sint occaecat cupidatat non proident, \nsunt in culpa qui officia deserunt mollit anim id est laborum.");
     }//GEN-LAST:event_onionRadioButtonActionPerformed
 
     private void progressTrackerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progressTrackerButtonActionPerformed
@@ -169,6 +151,14 @@ public class VegPanel extends javax.swing.JFrame {
         sqGUI2.setVisible(true);
         dispose();
     }//GEN-LAST:event_progressTrackerButtonActionPerformed
+
+    private void carrotRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carrotRadioButtonActionPerformed
+        JOptionPane.showMessageDialog(null,"Lorem ipsum dolor sit amet, consectetur adipiscing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco \nlaboris nisi ut aliquip ex ea commodo consequat. \nDuis aute irure dolor in reprehenderit \nin voluptate velit esse cillum dolore eu fugiat nulla pariatur. \nExcepteur sint occaecat cupidatat non proident, \nsunt in culpa qui officia deserunt mollit anim id est laborum.");
+    }//GEN-LAST:event_carrotRadioButtonActionPerformed
+
+    private void potatoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potatoRadioButtonActionPerformed
+        JOptionPane.showMessageDialog(null,"Lorem ipsum dolor sit amet, consectetur adipiscing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco \nlaboris nisi ut aliquip ex ea commodo consequat. \nDuis aute irure dolor in reprehenderit \nin voluptate velit esse cillum dolore eu fugiat nulla pariatur. \nExcepteur sint occaecat cupidatat non proident, \nsunt in culpa qui officia deserunt mollit anim id est laborum.");
+    }//GEN-LAST:event_potatoRadioButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,6 +188,7 @@ public class VegPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup RadioButtonGroup;
     private javax.swing.JTextArea VegCareText;
+    private javax.swing.JLabel bg;
     private javax.swing.JRadioButton carrotRadioButton;
     private javax.swing.JTextArea harvestGuideText;
     private javax.swing.JButton homeButton;
@@ -206,7 +197,6 @@ public class VegPanel extends javax.swing.JFrame {
     private javax.swing.JRadioButton onionRadioButton;
     private javax.swing.JRadioButton potatoRadioButton;
     private javax.swing.JButton progressTrackerButton;
-    private javax.swing.JButton vegConfirmButton;
-    private javax.swing.JLabel vegTitle;
+    private javax.swing.JLabel vegetableCareGuideLABEL;
     // End of variables declaration//GEN-END:variables
 }

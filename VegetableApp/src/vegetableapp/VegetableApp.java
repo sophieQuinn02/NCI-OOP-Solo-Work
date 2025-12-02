@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author omgit
+ * @author Sophie Quinn
  */
 public class VegetableApp {
 
@@ -16,13 +16,7 @@ public class VegetableApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        VegPanel sqGUI = new VegPanel();
+        VegPanel sqGUI = new VegPanel(); //links to the GUI
         sqGUI.setVisible(true);
     }
-    Potato p = new Potato();
-    Onion o = new Onion();
-    Carrot c = new Carrot();
-    
-
-    
 }

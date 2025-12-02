@@ -4,18 +4,24 @@
  */
 package vegetableapp;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author omgit
+ * @author Sophie Quinn
  */
 public class VegCheckGUI extends javax.swing.JFrame {
+    private ArrayList<VegGuide> vegList;//declare ArrayList of Vegguide objects
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VegCheckGUI.class.getName());
-
+       String colour, size, saveName, sunlightCheck, dirtCoverage, seasonCheck;
+       int time, rot, randomDays;
     /**
      * Creates new form VegCheckGUI
      */
     public VegCheckGUI() {
+        vegList = new ArrayList<>();//creating ArrayList of Employee Objects
         initComponents();
     }
 
@@ -30,18 +36,34 @@ public class VegCheckGUI extends javax.swing.JFrame {
 
         radioBtnGroup = new javax.swing.ButtonGroup();
         backBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         harvestGuideLABEL = new javax.swing.JLabel();
-        startBtn = new javax.swing.JButton();
+        submitBtn = new javax.swing.JButton();
         carrotBtn = new javax.swing.JRadioButton();
         potatoBtn = new javax.swing.JRadioButton();
         onionBtn = new javax.swing.JRadioButton();
-        saveBtn = new javax.swing.JButton();
         displayBtn = new javax.swing.JButton();
         searchBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        q5tBox = new javax.swing.JTextArea();
+        q5inputBox = new javax.swing.JTextField();
+        q4inputBox = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        q4tBox = new javax.swing.JTextArea();
+        q2inputBox = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        q3tBox = new javax.swing.JTextArea();
+        q3inputBox = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        q2tBox = new javax.swing.JTextArea();
+        q1inputBox = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        q1tBox = new javax.swing.JTextArea();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -49,91 +71,192 @@ public class VegCheckGUI extends javax.swing.JFrame {
                 backBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 250, -1, -1));
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setText("First, select option");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 120, -1));
+
+        harvestGuideLABEL.setBackground(new java.awt.Color(255, 255, 255));
+        harvestGuideLABEL.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         harvestGuideLABEL.setText("Harvest Guide");
+        getContentPane().add(harvestGuideLABEL, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 140, 30));
 
-        startBtn.setText("Start");
+        submitBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        submitBtn.setText("Submit");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 100, 40));
 
+        carrotBtn.setBackground(new java.awt.Color(51, 255, 102));
         radioBtnGroup.add(carrotBtn);
+        carrotBtn.setForeground(new java.awt.Color(51, 51, 51));
         carrotBtn.setText("Carrot");
+        carrotBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        carrotBtn.setOpaque(true);
+        carrotBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carrotBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(carrotBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 100, -1));
 
+        potatoBtn.setBackground(new java.awt.Color(51, 255, 102));
         radioBtnGroup.add(potatoBtn);
+        potatoBtn.setForeground(new java.awt.Color(51, 51, 51));
         potatoBtn.setText("Potato");
+        potatoBtn.setOpaque(true);
+        potatoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                potatoBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(potatoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 100, -1));
 
+        onionBtn.setBackground(new java.awt.Color(51, 255, 102));
         radioBtnGroup.add(onionBtn);
+        onionBtn.setForeground(new java.awt.Color(51, 51, 51));
         onionBtn.setText("Onion");
+        onionBtn.setOpaque(true);
+        onionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onionBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(onionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 100, -1));
 
-        saveBtn.setText("Save Info");
-
+        displayBtn.setBackground(new java.awt.Color(51, 255, 102));
         displayBtn.setText("Display");
+        displayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(displayBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 130, 30));
 
+        searchBtn.setBackground(new java.awt.Color(51, 255, 102));
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(searchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 130, 30));
 
+        deleteBtn.setBackground(new java.awt.Color(51, 255, 102));
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 130, 30));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vegetableapp/imagepkg/OOP vegApp bg1.jpg"))); // NOI18N
+        q5tBox.setEditable(false);
+        q5tBox.setColumns(20);
+        q5tBox.setLineWrap(true);
+        q5tBox.setRows(5);
+        q5tBox.setText("save results with a name:");
+        q5tBox.setWrapStyleWord(true);
+        jScrollPane5.setViewportView(q5tBox);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(harvestGuideLABEL, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(carrotBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134)
-                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(potatoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(onionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(134, 134, 134)
-                .addComponent(displayBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(startBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123)
-                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(352, 352, 352)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(backBtn))
-            .addComponent(bg)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(harvestGuideLABEL)
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(carrotBtn)
-                    .addComponent(saveBtn))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(potatoBtn)
-                        .addGap(6, 6, 6)
-                        .addComponent(onionBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(displayBtn)))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(startBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(searchBtn))
-                .addGap(2, 2, 2)
-                .addComponent(deleteBtn)
-                .addGap(31, 31, 31)
-                .addComponent(backBtn))
-            .addComponent(bg)
-        );
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 170, 30));
+
+        q5inputBox.setBackground(new java.awt.Color(51, 51, 51));
+        q5inputBox.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
+        q5inputBox.setForeground(new java.awt.Color(255, 255, 255));
+        q5inputBox.setText("e.g test!");
+        q5inputBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                q5inputBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(q5inputBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 170, -1));
+
+        q4inputBox.setBackground(new java.awt.Color(51, 51, 51));
+        q4inputBox.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
+        q4inputBox.setForeground(new java.awt.Color(255, 255, 255));
+        q4inputBox.setText("example...");
+        getContentPane().add(q4inputBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 170, -1));
+
+        q4tBox.setEditable(false);
+        q4tBox.setColumns(20);
+        q4tBox.setLineWrap(true);
+        q4tBox.setRows(5);
+        q4tBox.setText("final veg-specific question!");
+        q4tBox.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(q4tBox);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 170, 40));
+
+        q2inputBox.setBackground(new java.awt.Color(51, 51, 51));
+        q2inputBox.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
+        q2inputBox.setForeground(new java.awt.Color(255, 255, 255));
+        q2inputBox.setText("e.g red, orange..");
+        q2inputBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                q2inputBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(q2inputBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 170, -1));
+
+        q3tBox.setEditable(false);
+        q3tBox.setColumns(20);
+        q3tBox.setLineWrap(true);
+        q3tBox.setRows(5);
+        q3tBox.setText("how big is your veg?");
+        q3tBox.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(q3tBox);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 170, 40));
+
+        q3inputBox.setBackground(new java.awt.Color(51, 51, 51));
+        q3inputBox.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
+        q3inputBox.setForeground(new java.awt.Color(255, 255, 255));
+        q3inputBox.setText("e.g small, medium..");
+        q3inputBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                q3inputBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(q3inputBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 170, -1));
+
+        q2tBox.setEditable(false);
+        q2tBox.setColumns(20);
+        q2tBox.setLineWrap(true);
+        q2tBox.setRows(5);
+        q2tBox.setText("What colour is your veg?");
+        q2tBox.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(q2tBox);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 170, 40));
+
+        q1inputBox.setBackground(new java.awt.Color(51, 51, 51));
+        q1inputBox.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
+        q1inputBox.setForeground(new java.awt.Color(255, 255, 255));
+        q1inputBox.setText("3");
+        q1inputBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                q1inputBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(q1inputBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 170, -1));
+
+        q1tBox.setEditable(false);
+        q1tBox.setColumns(20);
+        q1tBox.setLineWrap(true);
+        q1tBox.setRows(5);
+        q1tBox.setText("how many days have your veg been planted?");
+        q1tBox.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(q1tBox);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 170, 40));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vegetableapp/imagepkg/OOP vegApp bg2.jpg"))); // NOI18N
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,6 +267,128 @@ public class VegCheckGUI extends javax.swing.JFrame {
         sqGUI2.setVisible(true);
         dispose();
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void displayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBtnActionPerformed
+        if(vegList.isEmpty()){
+            JOptionPane.showMessageDialog(this,"There is no vegetable data found. Please add more to display.");
+            
+        }
+        else{
+            for(int i = 0; i < vegList.size();i++){
+                VegGuide v = vegList.get(i);
+                JOptionPane.showMessageDialog(this,v.printResult());
+            }
+        }
+    }//GEN-LAST:event_displayBtnActionPerformed
+
+    private void q1inputBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_q1inputBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_q1inputBoxActionPerformed
+
+    private void q2inputBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_q2inputBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_q2inputBoxActionPerformed
+
+    private void q3inputBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_q3inputBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_q3inputBoxActionPerformed
+
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        if(carrotBtn.isSelected()){
+            time = Integer.parseInt(q1inputBox.getText());
+            colour = q2inputBox.getText();
+            size = q3inputBox.getText();
+            seasonCheck = q4inputBox.getText();
+            saveName = q5inputBox.getText();
+            randomDays = ((int)(Math.random() *246)+20-time);
+        
+            Carrot c = new Carrot(colour,saveName,time,size,rot,randomDays,seasonCheck);
+            JOptionPane.showMessageDialog(null,"ya result is: \n\ndays planted: "+time+"\ncarrot colour: "+colour+"\ncarrot size: "+size+"\nseason: "+seasonCheck+"\ndata saved under: "+saveName+"\n\nexpected days until harvest: "+randomDays+"\nchance of vegetable rot: "+rot);
+            vegList.add(c);//add object to ArrayList
+        }
+        else if(potatoBtn.isSelected()){
+            time = Integer.parseInt(q1inputBox.getText());
+            colour = q2inputBox.getText();
+            size = q3inputBox.getText();
+            sunlightCheck = q4inputBox.getText();
+            saveName = q5inputBox.getText();
+            randomDays = ((int)(Math.random() *141)+20-time);
+            //rot =
+        
+            Potato p = new Potato(colour,saveName,time,size,rot,randomDays,sunlightCheck);
+            JOptionPane.showMessageDialog(null,"ya result is: \n\ndays planted: "+time+"\npotato colour: "+colour+"\npotato size: "+size+"\nhours of sunlight: "+sunlightCheck+"\ndata saved under: "+saveName+"\n\nexpected days until harvest: "+randomDays+"\nchance of vegetable rot: "+rot);
+            vegList.add(p);//add object to ArrayList
+        }
+        else if(onionBtn.isSelected()){
+            time = Integer.parseInt(q1inputBox.getText());
+            colour = q2inputBox.getText();
+            size = q3inputBox.getText();
+            dirtCoverage = q4inputBox.getText();
+            saveName = q5inputBox.getText();
+            randomDays = ((int)(Math.random() *101)+20-time);
+        
+            Onion o = new Onion(colour,saveName,time,size,rot,randomDays,dirtCoverage);
+            JOptionPane.showMessageDialog(null,"ya result is: \n\ndays planted: "+time+"\nonion colour: "+colour+"\nonion size: "+size+"\ndirt coverage: "+dirtCoverage+"\ndata saved under: "+saveName+"\n\nexpected days until harvest: "+randomDays+"\nchance of vegetable rot: "+rot);
+            vegList.add(o);//add object to ArrayList
+        }
+    }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void carrotBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carrotBtnActionPerformed
+        q1tBox.setText("how many days have your carrots been planted?");
+        q2tBox.setText("What colour are your carrots?");
+        q3tBox.setText("how big are your carrots?");
+        q4tBox.setText("what season is it? (winter, summer etc)");
+    }//GEN-LAST:event_carrotBtnActionPerformed
+
+    private void potatoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potatoBtnActionPerformed
+        q1tBox.setText("how many days have your potatoes been planted?");
+        q2tBox.setText("What colour are your ptoatoes?");
+        q3tBox.setText("how big are your potatoes?");
+        q4tBox.setText("how many hours of sunlight per day do you get?");
+    }//GEN-LAST:event_potatoBtnActionPerformed
+
+    private void onionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onionBtnActionPerformed
+        q1tBox.setText("how many days have your onions been planted?");
+        q2tBox.setText("What colour are your onions?");
+        q3tBox.setText("how big are your onions?");
+        q4tBox.setText("is there dirt covering the onions? (yes, no");
+    }//GEN-LAST:event_onionBtnActionPerformed
+
+    private void q5inputBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_q5inputBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_q5inputBoxActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        if(vegList.isEmpty()){
+            JOptionPane.showMessageDialog(this,"There is no vegetable data to delete");
+        }
+        else{
+            String searchTerm = JOptionPane.showInputDialog(this,"Pls enter saved name to delete:");
+                        System.out.print(searchTerm);
+
+            for(int i = 0; i < vegList.size();i++){
+                if(vegList.get(i).getSaveName().equalsIgnoreCase(searchTerm)){
+                    vegList.remove(i);
+                    JOptionPane.showMessageDialog(this,"Sucessfully deleted "+searchTerm+".");
+                }
+            }
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        if(vegList.isEmpty()){
+            JOptionPane.showMessageDialog(this,"There is no vegetable data to search.");
+        }
+        else{
+            String searchTerm = JOptionPane.showInputDialog(this,"Pls enter saved name:");
+            System.out.print(searchTerm);
+            for(int i = 0; i < vegList.size();i++){
+                if(vegList.get(i).getSaveName().equalsIgnoreCase(searchTerm)){
+                    JOptionPane.showMessageDialog(this, vegList.get(i).printResult());
+                }
+            }
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,11 +422,26 @@ public class VegCheckGUI extends javax.swing.JFrame {
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton displayBtn;
     private javax.swing.JLabel harvestGuideLABEL;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JRadioButton onionBtn;
     private javax.swing.JRadioButton potatoBtn;
+    private javax.swing.JTextField q1inputBox;
+    private javax.swing.JTextArea q1tBox;
+    private javax.swing.JTextField q2inputBox;
+    private javax.swing.JTextArea q2tBox;
+    private javax.swing.JTextField q3inputBox;
+    private javax.swing.JTextArea q3tBox;
+    private javax.swing.JTextField q4inputBox;
+    private javax.swing.JTextArea q4tBox;
+    private javax.swing.JTextField q5inputBox;
+    private javax.swing.JTextArea q5tBox;
     private javax.swing.ButtonGroup radioBtnGroup;
-    private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
-    private javax.swing.JButton startBtn;
+    private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 }

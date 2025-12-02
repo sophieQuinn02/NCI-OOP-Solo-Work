@@ -6,26 +6,32 @@ package vegetableapp;
 
 /**
  *
- * @author omgit
+ * @author Sophie Quinn
  */
 public class VegGuide {
-    private String colour;
-    private double time;
-    private double size;
-    private double rot;
+    private String colour; //variable for the question about vegetable colour
+    private String saveName; //variable for the saved name users create
+    private String size; //variable for the question about vegetable size
+    private int time; //variable for the question about the amount of days
+    private int rot; //variable for the rot counter determining if the vegetable is rotten
+    private int randomDays; //variable for the day randomizer that decides how long until harvest
     
-    public VegGuide(String colour, double time, double size, double rot){
+    public VegGuide(String colour, String saveName, int time, String size, int rot, int randomDays){ //declares each variable
         this.colour = colour;
+        this.saveName = saveName;
         this.time = time;
         this.size = size;
         this.rot = rot;
+        this.randomDays = randomDays;
     }
     
-    public VegGuide(){
-        colour = new String();
+    public VegGuide(){ //declares what each variable starts as
+        colour = "no input"; //if no input is typed by the user, this will appear
+        size = "no input"; //if no input is typed by the user, this will appear
+        saveName = "no input"; //if no input is typed by the user, this will appear
         time = 0;
-        size = 0;
         rot = 0;
+        randomDays = 0;
     }
 
     public String getColour() {
@@ -40,28 +46,44 @@ public class VegGuide {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
-    public double getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(double size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
-    public double getRot() {
+    public int getRot() {
         return rot;
     }
 
-    public void setRot(double rot) {
+    public void setRot(int rot) {
         this.rot = rot;
     }
+
+    public String getSaveName() {
+        return saveName;
+    }
+
+    public void setSaveName(String saveName) {
+        this.saveName = saveName;
+    }
+
+    public int getRandomDays() {
+        return randomDays;
+    }
+
+    public void setRandomDays(int randomDays) {
+        this.randomDays = randomDays;
+    }
     
-    public String printResult(){
-        return colour+" , "+time+" , "+size;
+    public String printResult(){ //saves the results from the form
+        return colour+" , "+time+" , "+size+" , "+saveName+" , "+rot+" , "+randomDays;
     }
 }
 

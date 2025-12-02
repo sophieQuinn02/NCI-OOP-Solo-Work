@@ -6,27 +6,31 @@ package vegetableapp;
 
 /**
  *
- * @author omgit
+ * @author
  */
 public class Potato extends VegGuide implements HarvestTime{
-    private double sunlightCheck;
+    private String sunlightCheck; //the unique variable for Potato
     
-    public Potato(double sunlightCheck, String colour, double time, double size, double rot){
-        super(colour, time, size, rot);
+    public Potato(String colour, String saveName, int time, String size, int rot, int randomDays, String sunlightCheck){
+        super(colour, saveName, time, size, rot, randomDays);
         this.sunlightCheck = sunlightCheck;
     }
 
-        public double getSunlightCheck() {
+   // Potato(String colour, String saveName, int time, String size, double rot, String sunlightCheck) {
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    //}
+
+        public String getSunlightCheck() {
             return sunlightCheck;
         }
 
-        public void setSunlightCheck(double sunlightCheck) {
+        public void setSunlightCheck(String sunlightCheck) {
             this.sunlightCheck = sunlightCheck;
         }
         
     @Override
-    public double HarvestTime(){
-        
+    public String HarvestTime(){
+        return sunlightCheck;
     }
     
     @Override
